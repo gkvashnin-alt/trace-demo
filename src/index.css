@@ -1,1 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-navy-900: #1A2340;
+  --color-navy-800: #243052;
+  --color-navy-700: #1E3A5F;
+  --color-orange-500: #F97316;
+  --color-bg-light: #F8F9FC;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light font-sans text-navy-900 antialiased;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-live {
+  animation: pulse-live 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-analyzing {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-analyzing {
+  animation: pulse-analyzing 0.6s ease-in-out infinite;
+}
