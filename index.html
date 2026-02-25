@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACE — Transfer Resolution & Agent Coaching Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F8F9FC;
+            --navy: #1A2340;
+            --navy-light: #243052;
+            --orange: #F97316;
+            --success: #22C55E;
+            --warning: #EAB308;
+            --danger: #EF4444;
+            --card-bg: #FFFFFF;
+            --text-main: #1A2340;
+            --text-muted: #64748B;
+            --border-radius: 12px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Section 1: Hero */
+        .hero {
+            background-color: var(--navy);
+            color: white;
+            padding: 4rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-top-left {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            text-align: left;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 4rem auto 0;
+        }
+
+        .hero-h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-sub {
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background-color: var(--navy-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--orange);
+            text-align: left;
+        }
+
+        .stat-val {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-sub {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .how-it-works {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .cta-btn {
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+        }
+
+        .badge-row {
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .pill-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 999px;
+            margin: 0.25rem;
+        }
+
+        /* Section 2: Demo */
+        .demo-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        .scenario-bar {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            box-shadow: var(--shadow);
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 58% 42%;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            background: var(--navy);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .live-badge {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+
+        .transcript-container {
+            height: 600px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            scroll-behavior: smooth;
+            background: #FFFFFF;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .msg-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .msg-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            max-width: 85%;
+            font-size: 0.9375rem;
+        }
+
+        .msg-customer .msg-bubble {
+            background: #F1F5F9;
+            color: var(--text-main);
+            border-bottom-left-radius: 2px;
+        }
+
+        .msg-agent {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .msg-agent .msg-bubble {
+            background: var(--navy);
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .controls-container {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .control-row {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #CBD5E1;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            border-color: var(--navy);
+            color: var(--navy);
+        }
+
+        .btn-outline:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-play {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            min-width: 140px;
+            transition: background 0.2s;
+        }
+
+        .btn-play:hover {
+            background: #ea580c;
+        }
+
+        .speed-toggle {
+            display: flex;
+            background: #F1F5F9;
+            padding: 0.25rem;
+            border-radius: 999px;
+        }
+
+        .speed-btn {
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            color: var(--text-muted);
+        }
+
+        .speed-btn.active {
+            background: var(--orange);
+            color: white;
+        }
+
+        /* TRACE Panel */
+        .trace-panel {
+            background: var(--navy);
+            color: white;
+            height: 600px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .trace-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .trace-progress-container {
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .trace-progress-bar {
+            height: 100%;
+            background: var(--orange);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .trace-subheader {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 40px;
+        }
+
+        .analyzing-text {
+            color: var(--orange);
+            font-weight: 600;
+            animation: fadePulse 0.6s infinite alternate;
+            opacity: 0;
+        }
+
+        @keyframes fadePulse {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+
+        .trace-content {
+            padding: 1.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .state-container {
+            animation: slideUpFade 0.4s ease-out;
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .score-row {
+            margin-bottom: 1.5rem;
+        }
+
+        .score-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .score-bar-bg {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.9s ease-in-out, background-color 0.6s ease-in-out;
+        }
+
+        .score-context {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .insight-box {
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-top: 1.5rem;
+        }
+
+        .insight-neutral { background: var(--navy-light); }
+        .insight-teal { background: #1E3A5F; }
+        .insight-green { background: #1A3A2A; }
+
+        .warning-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .badge-orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+        .badge-red { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge-yellow { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .badge-green { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+        .checklist-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .checklist-title {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--orange);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-item.checked {
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+        }
+
+        .rewrite-card {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .rewrite-title {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Section 3: Impact */
+        .impact-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .impact-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background: var(--bg);
+        }
+
+        .impact-val {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .impact-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .disclaimer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 6rem;
+        }
+
+        .surface-area {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+        }
+
+        .surface-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .surface-card {
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background: var(--bg);
+            border: 1px solid #E2E8F0;
+        }
+
+        .surface-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .surface-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .roadmap {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .roadmap::after {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            border-top: 2px dotted #CBD5E1;
+            z-index: 0;
+        }
+
+        .roadmap-step {
+            flex: 1;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
+        .roadmap-dot {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #CBD5E1;
+            margin: 1.75rem auto 1rem;
+        }
+
+        .roadmap-step.active .roadmap-dot {
+            border-color: var(--orange);
+        }
+
+        .roadmap-title {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .roadmap-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-left { color: rgba(255,255,255,0.6); }
+        .footer-right { color: rgba(255,255,255,0.4); }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--navy);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .demo-grid { grid-template-columns: 1fr; }
+            .stat-cards { grid-template-columns: 1fr; }
+            .impact-grid { grid-template-columns: repeat(2, 1fr); }
+            .surface-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-h1 { font-size: 2rem; }
+            .transcript-container, .trace-panel { height: 420px; }
+            .roadmap { flex-direction: column; gap: 2rem; }
+            .roadmap::after { display: none; }
+            footer { flex-direction: column; text-align: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="hero-top-left">
+            <div class="logo">⚡ TRACE</div>
+            <div class="logo-sub">Transfer Resolution & Agent Coaching Engine · CommOps AI Hackathon 2026</div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-h1">50% of T&S transfers don't belong there.<br>Agents are making judgment calls with no data.</h1>
+            <p class="hero-sub">A real-time AI coaching layer that tells agents when to transfer, where to transfer, and when they already have the power to resolve it themselves — reducing invalid transfers, bounce-backs, and repeat contacts across every team.</p>
+            
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-val">50%+</div>
+                    <div class="stat-label">Invalid T&S transfers</div>
+                    <div class="stat-sub">Cases routed to T&S that are returned or receive no action</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">~35%</div>
+                    <div class="stat-label">Re-contact rate</div>
+                    <div class="stat-sub">Repeat inbound contacts from unresolved transfers, directly inflating total ticket volume</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val">4+ teams</div>
+                    <div class="stat-label">Misroute surface area</div>
+                    <div class="stat-sub">Invalid transfers span T&S, Bugs, Back-Office, Escalations, and Sales Ops</div>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-icon">🎧</div>
+                    <div class="step-title">Conversation Starts</div>
+                    <div class="step-desc">TRACE reads live transcript and case metadata in real time</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🧠</div>
+                    <div class="step-title">Four Signals Scored</div>
+                    <div class="step-desc">Skill match, evidence, team fit, and acceptance likelihood — all live</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">✅</div>
+                    <div class="step-title">Agent Gets Coached</div>
+                    <div class="step-desc">Resolve in-service when possible. Transfer only when ready.</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📋</div>
+                    <div class="step-title">Handoff Packet Built</div>
+                    <div class="step-desc">If transfer proceeds, receiving team gets everything they need — no rework</div>
+                </div>
+            </div>
+
+            <a href="#demo" class="cta-btn">▶ See It In Action</a>
+
+            <div class="badge-row">
+                Covers: 
+                <span class="pill-badge">Trust & Safety</span>
+                <span class="pill-badge">Bugs / Engineering</span>
+                <span class="pill-badge">Back-Office</span>
+                <span class="pill-badge">Service Escalations</span>
+                <span class="pill-badge">Sales Ops</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Demo -->
+    <section id="demo" class="demo-section">
+        <div class="section-header">
+            <h2 class="section-title">Live Demo — T&S Scenario</h2>
+            <p class="section-subtitle">Watch TRACE coach an agent through a real misroute in real time.</p>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="scenario-bar">
+                Scenario: Pro account reactivation · T&S repeat contact · Agent: L2 · Channel: Voice · Case age: 6 months
+            </div>
+        </div>
+
+        <div class="demo-grid">
+            <!-- Left Column: Transcript -->
+            <div class="card">
+                <div class="card-header">
+                    <span>🎧 Live Conversation</span>
+                    <div class="live-badge">
+                        <span class="live-dot"></span> LIVE
+                    </div>
+                </div>
+                <div id="transcript" class="transcript-container">
+                    <!-- Messages will be injected here -->
+                </div>
+            </div>
+
+            <!-- Right Column: TRACE Panel -->
+            <div class="card trace-panel">
+                <div class="trace-progress-container">
+                    <div id="demo-progress" class="trace-progress-bar"></div>
+                </div>
+                <div class="trace-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 800; font-size: 1.1rem;">⚡ TRACE</span>
+                        <span style="font-size: 0.7rem; opacity: 0.5; font-weight: 600; text-transform: uppercase;">AI-Assisted · View Only</span>
+                    </div>
+                </div>
+                <div class="trace-subheader">
+                    <div id="analyzing-indicator" class="analyzing-text">⚡ TRACE is analyzing...</div>
+                    <div id="state-badge-container"></div>
+                </div>
+                <div id="trace-content" class="trace-content">
+                    <!-- State content will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Controls -->
+        <div class="controls-container">
+            <div class="control-row">
+                <button id="btn-back" class="btn-outline" disabled>⏮ Back</button>
+                <button id="btn-play" class="btn-play">▶ Start Demo</button>
+                <button id="btn-forward" class="btn-outline">Forward ⏭</button>
+            </div>
+            <div class="control-row">
+                <div class="speed-toggle">
+                    <button id="speed-normal" class="speed-btn active">🐢 Normal</button>
+                    <button id="speed-fast" class="speed-btn">⚡ Fast</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Impact -->
+    <section class="impact-section">
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-val">📉 ~40%</div>
+                <div class="impact-label">Reduction in invalid transfers</div>
+                <div class="impact-sub">(simulated on sample set)</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-val">⏱️ ~30%</div>
+                <div class="impact-label">Faster agent decision time</div>
+                <div class="impact-sub">Real-time guidance reduces hesitation</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-val">🔁 ↑ FCR</div>
+                <div class="impact-label">More cases resolved without transfer</div>
+                <div class="impact-sub">Guidance empowers in-service resolution</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-val">📦 100%</div>
+                <div class="impact-label">Handoff packets on all transfers</div>
+                <div class="impact-sub">(no rework for receiving team)</div>
+            </div>
+        </div>
+
+        <p class="disclaimer">* Metrics simulated on anonymized sample set of 10 cases for prototype demonstration.</p>
+
+        <div class="surface-area">
+            <div class="section-header">
+                <h2 class="section-title" style="font-size: 1.75rem;">Transfer Surface Area</h2>
+                <p class="section-subtitle">TRACE identifies and mitigates misroutes across every major operational team.</p>
+            </div>
+            <div class="surface-grid">
+                <div class="surface-card">
+                    <div class="surface-title">🔒 Trust & Safety</div>
+                    <div class="surface-desc">Account flags, reactivations, and fraud reports sent before evidence is gathered.</div>
+                </div>
+                <div class="surface-card">
+                    <div class="surface-title">🐛 Bugs / Eng</div>
+                    <div class="surface-desc">Service tickets escalated to Bugs that agents can resolve with a known workaround.</div>
+                </div>
+                <div class="surface-card">
+                    <div class="surface-title">🏢 Back-Office</div>
+                    <div class="surface-desc">Cases missing documents routed before collection is attempted.</div>
+                </div>
+                <div class="surface-card">
+                    <div class="surface-title">📈 Escalations</div>
+                    <div class="surface-desc">L1→L3 escalations where L2 had full authority to resolve.</div>
+                </div>
+                <div class="surface-card">
+                    <div class="surface-title">💼 Sales Ops</div>
+                    <div class="surface-desc">Billing inquiries transferred without attempting in-service lookup first.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title" style="font-size: 1.75rem;">Phased Rollout</h2>
+        </div>
+        <div class="roadmap">
+            <div class="roadmap-step active">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-title" style="color: var(--orange);">Phase 0</div>
+                <div class="roadmap-desc">Prototype Demo · This week · Simulated Observe.AI · T&S scenario · Mock UI</div>
+            </div>
+            <div class="roadmap-step">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-title">Phase 1</div>
+                <div class="roadmap-desc">Pilot · 4–8 weeks · Observe.AI + KA integration · 10–20 agents · Live metrics</div>
+            </div>
+            <div class="roadmap-step">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-title">Phase 2</div>
+                <div class="roadmap-desc">Scale · Q2 2027 · All teams · Full audit logging · Model retraining</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-left">⚡ TRACE — Transfer Resolution & Agent Coaching Engine · CommOps AI Hackathon 2026</div>
+        <div class="footer-right">Built by Grigorii Kvashnin · Brian King · Venice Segovia · Blaise Anne Cahilog</div>
+    </footer>
+
+    <div id="toast">Coming in Phase 1 pilot</div>
+
+    <script>
+        // --- DATA ---
+        const transcript = [
+            { time: "00:09", sender: "Customer", text: "Hi, I need help getting my pro account reactivated. I've been trying to sort this out for about six months now." },
+            { time: "00:17", sender: "Agent", text: "I'm sorry to hear that — six months is a long time. Let me pull up your account right away. Can I get your name and email to verify?" },
+            { time: "00:24", sender: "Customer", text: "Sure. It's Eric Halstead — mustang40437 at gmail dot com." },
+            { time: "00:35", sender: "Agent", text: "Thank you, Eric. I can see your account here. It looks like there's an open case flagged under our Trust and Safety team. There was an email sent back in July 2025 requesting some documents from you." },
+            { time: "00:44", sender: "Customer", text: "Yes — I lost that email. When I called back months ago to get another one sent, the T&S rep told me they couldn't resend it. I've called four times now and no one has been able to help me." },
+            { time: "00:55", sender: "Agent", text: "I completely understand your frustration, Eric. What I can do is re-escalate this back to our Trust and Safety team and they'll follow up with you." },
+            { time: "01:04", sender: "Customer", text: "That's exactly what the last three agents told me. T&S has not helped me. Every time I'm just told to wait for an email that never comes. Is there any other way to resolve this?" },
+            { time: "01:14", sender: "Agent", text: "I hear you. Let me check your account more carefully. I do have an alternative email on file — i h r s contracting at gmail dot com. Is that still a valid email for you?" },
+            { time: "01:22", sender: "Customer", text: "That account exists but it's associated with a different profile I set up by mistake. I'd prefer you use my main one — mustang40437 at gmail." },
+            { time: "01:31", sender: "Agent", text: "Got it, I've noted that. And just so I understand — would you prefer a callback rather than email communication going forward?" },
+            { time: "01:38", sender: "Customer", text: "Yes, absolutely. Every time they say they'll email me, I don't get it, or it goes to spam. A phone call would be so much better." },
+            { time: "01:46", sender: "Agent", text: "Understood. I've noted your preference for a phone callback. Now, looking at the case, the document they originally requested was proof of your insurance claim status. I may actually be able to re-trigger that document request from my end without needing to route you back to T&S. Let me check." },
+            { time: "01:58", sender: "Customer", text: "Oh — that would be amazing. I've been trying to get someone to do exactly that for months." },
+            { time: "02:09", sender: "Agent", text: "Good news — I can submit an internal doc re-request and flag your callback preference directly. This means T&S will reach out to you by phone with a fresh document link, rather than waiting on another email. I'll add a note to the case so the next rep is fully briefed if you call back." }
+        ];
+
+        const stateTriggerMap = {
+            1: 0, // State 0: Idle
+            2: 1, // After msg 2 -> State 1
+            5: 2, // After msg 5 -> State 2
+            6: 3, // After msg 6 -> State 3
+            12: 4, // After msg 12 -> State 4
+            14: 5  // After msg 14 -> State 5
+        };
+
+        const scoreTable = [
+            { // State 0
+                skill: 0, evidence: 0, teams: [], acceptance: 0
+            },
+            { // State 1
+                skill: 61, evidence: 48, teams: [{ name: "Adv. Support", val: 54 }], acceptance: 44,
+                skillCtx: "L2 agent identified · Account reactivation case loaded · Skill confidence building",
+                evidenceCtx: "Identity verified · Case located · Document status unknown",
+                teamCtx: "Complex account history · Advanced Support flagged as initial candidate",
+                acceptanceCtx: "Insufficient case context yet — monitoring",
+                badge: null,
+                insight: "📊 Baseline established. Agent is L2 — monitoring for skill signals and evidence gaps as conversation develops.",
+                insightType: "neutral"
+            },
+            { // State 2
+                skill: 58, evidence: 31, teams: [{ name: "Adv. Support", val: 61 }, { name: "T&S", val: 48 }], acceptance: 29,
+                skillCtx: "Case complexity elevated · Repeat contact pattern detected · L2 authority being assessed",
+                evidenceCtx: "Alt email unconfirmed · Callback preference unknown · Doc re-request not attempted",
+                teamCtx: "Repeat contact pattern → Advanced Support flagged · T&S remains secondary candidate",
+                acceptanceCtx: "T&S return rate for this case type: 64% last 90 days · Evidence insufficient for clean handoff",
+                badge: { type: "orange", text: "⚠️ Transfer Risk: HIGH — Repeat contact + evidence gaps detected" },
+                insight: "💡 FCR Opportunity — L2 agents have resolved this case type in-service in 3 of 5 similar cases using a doc re-request override. Recommend attempting before any transfer.",
+                insightType: "teal"
+            },
+            { // State 3
+                skill: 52, evidence: 31, teams: [{ name: "T&S", val: 58 }, { name: "Adv. Support", val: 41 }], acceptance: 24,
+                skillCtx: "Transfer reflex detected · Agent has not attempted in-service resolution · Skill underutilized",
+                evidenceCtx: "No new evidence gathered · Alt email still unconfirmed · Doc re-request not attempted",
+                teamCtx: "T&S flagged as primary — but prior T&S contact with no resolution on record",
+                acceptanceCtx: "Transferring without evidence confirmation · High bounce-back probability",
+                badge: { type: "red", text: "🔴 Transfer Risk: CRITICAL — Evidence gaps + transfer reflex detected" },
+                checklist: {
+                    title: "REQUIRED BEFORE TRANSFER",
+                    items: [
+                        { text: "Confirm primary email on file", checked: false },
+                        { text: "Log callback preference (phone, not email)", checked: false },
+                        { text: "Attempt doc re-request before routing", checked: false }
+                    ]
+                },
+                rewrite: {
+                    instead: "I'll re-escalate this to Trust & Safety.",
+                    try: "Before I loop in T&S, let me check if I can re-trigger the document request from my end — that saves you another email cycle."
+                }
+            },
+            { // State 4
+                skill: 79, evidence: 68, teams: [{ name: "T&S", val: 71 }], acceptance: 38,
+                skillCtx: "Agent demonstrated ownership · Identified in-service resolution path · L2 authority confirmed",
+                evidenceCtx: "Primary email confirmed · Callback preference logged · Doc re-request being explored",
+                teamCtx: "T&S confirmed as correct team if escalation required · Advanced Support no longer primary candidate",
+                acceptanceCtx: "Doc re-request not yet submitted · Transfer acceptance will rise once evidence confirmed",
+                badge: { type: "yellow", text: "🟡 Transfer Risk: REDUCED — Agent attempting in-service resolution" },
+                checklist: {
+                    title: "FCR PATH — IN PROGRESS",
+                    items: [
+                        { text: "Primary email confirmed", checked: true },
+                        { text: "Callback preference logged", checked: true },
+                        { text: "Doc re-request submitted", checked: false, highlighted: true }
+                    ]
+                },
+                insight: "✅ Agent is on the right path. Completing the doc re-request avoids T&S transfer entirely. FCR outcome is likely.",
+                insightType: "green"
+            },
+            { // State 5
+                skill: 91, evidence: 94, teams: "Resolved In-Service", acceptance: "Avoided",
+                skillCtx: "Complex case resolved in-service · Full ownership demonstrated · L2 authority fully utilized",
+                evidenceCtx: "Email confirmed · Callback logged · Doc re-request submitted · Case fully briefed",
+                teamCtx: "No transfer required · T&S briefed via case notes for follow-up callback only",
+                acceptanceCtx: "FCR achieved · Re-contact risk eliminated · No handoff required",
+                badge: { type: "green", text: "✅ FCR Achieved — Transfer avoided. Case resolved in-service." },
+                summary: {
+                    title: "📋 Case Summary — For Record",
+                    text: "Resolution: In-service (no transfer required)\nAgent: L2 · Case age: 6 months (reopened)\nActions taken:\n· Primary email confirmed: mustang40437@gmail.com\n· Contact preference: Phone callback logged\n· Doc re-request submitted internally\n· T&S briefed via case notes — will call rather than email\n\nOutcome: Customer to receive phone callback from T&S with fresh document link. No re-route required."
+                }
+            }
+        ];
+
+        const timings = [0, 3000, 6000, 9000, 12000, 15500, 19000, 22000, 25000, 28000, 31000, 34000, 37000, 40000];
+
+        // --- STATE ---
+        let currentIndex = -1; // Current message index
+        let currentState = 0;
+        let isPlaying = false;
+        let speed = 1; // 1 = Normal, 2 = Fast
+        let timer = null;
+        let startTime = 0;
+        let pausedAt = 0;
+
+        // --- ELEMENTS ---
+        const transcriptDiv = document.getElementById('transcript');
+        const traceContentDiv = document.getElementById('trace-content');
+        const badgeContainer = document.getElementById('state-badge-container');
+        const analyzingIndicator = document.getElementById('analyzing-indicator');
+        const demoProgressBar = document.getElementById('demo-progress');
+        const btnPlay = document.getElementById('btn-play');
+        const btnBack = document.getElementById('btn-back');
+        const btnForward = document.getElementById('btn-forward');
+        const speedNormal = document.getElementById('speed-normal');
+        const speedFast = document.getElementById('speed-fast');
+        const toast = document.getElementById('toast');
+
+        // --- FUNCTIONS ---
+
+        function updateTranscript() {
+            transcriptDiv.innerHTML = '';
+            for (let i = 0; i <= currentIndex; i++) {
+                const msg = transcript[i];
+                const msgEl = document.createElement('div');
+                msgEl.className = `message visible msg-${msg.sender.toLowerCase()}`;
+                msgEl.innerHTML = `
+                    <div class="msg-label">${msg.sender}</div>
+                    <div class="msg-bubble">${msg.text}</div>
+                    <div class="msg-time">[${msg.time}]</div>
+                `;
+                transcriptDiv.appendChild(msgEl);
+            }
+            transcriptDiv.scrollTop = transcriptDiv.scrollHeight;
+        }
+
+        function showToast() {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + "%";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function getBarColor(val) {
+            if (val >= 70) return 'var(--success)';
+            if (val >= 40) return 'var(--warning)';
+            return 'var(--danger)';
+        }
+
+        function renderState(stateIdx) {
+            const data = scoreTable[stateIdx];
+            
+            // Progress bar
+            const progress = ((currentIndex + 1) / transcript.length) * 100;
+            demoProgressBar.style.width = `${progress}%`;
+
+            // Badge
+            badgeContainer.style.opacity = '0';
+            setTimeout(() => {
+                badgeContainer.innerHTML = '';
+                if (data.badge) {
+                    const b = document.createElement('div');
+                    b.className = `warning-badge badge-${data.badge.type}`;
+                    b.innerText = data.badge.text;
+                    badgeContainer.appendChild(b);
+                }
+                badgeContainer.style.opacity = '1';
+            }, 300);
+
+            // Content
+            traceContentDiv.style.opacity = '0';
+            setTimeout(() => {
+                let html = `<div class="state-container">`;
+
+                if (stateIdx === 0) {
+                    html += `
+                        <div style="text-align: center; margin-top: 4rem;">
+                            <div style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.3;">〰️</div>
+                            <div style="font-weight: 500; margin-bottom: 0.5rem;">TRACE will activate when the conversation begins.</div>
+                            <div style="font-size: 0.75rem; opacity: 0.5;">Monitoring: transcript · case metadata · agent profile · transfer history</div>
+                        </div>
+                    `;
+                } else {
+                    // Skill Match
+                    html += renderScoreRow("Skill Match", data.skill, data.skillCtx, "skill-score");
+                    // Evidence
+                    html += renderScoreRow("Evidence Sufficiency", data.evidence, data.evidenceCtx, "evidence-score");
+                    
+                    // Team Selection
+                    html += `<div class="score-row">
+                        <div class="score-info"><span>Team Selection</span></div>`;
+                    if (typeof data.teams === 'string') {
+                        html += `<div class="badge-green" style="padding: 0.4rem 0.8rem; border-radius: 999px; display: inline-block; font-size: 0.75rem; font-weight: 700;">✅ ${data.teams}</div>`;
+                    } else {
+                        data.teams.forEach((t, i) => {
+                            html += `
+                                <div style="margin-bottom: 0.5rem;">
+                                    <div class="score-info" style="font-size: 0.75rem; color: rgba(255,255,255,0.7);">
+                                        <span>${t.name}</span>
+                                        <span>${t.val}%</span>
+                                    </div>
+                                    <div class="score-bar-bg">
+                                        <div class="score-bar-fill" style="width: ${t.val}%; background-color: ${getBarColor(t.val)};"></div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                    html += `<div class="score-context">${data.teamCtx}</div></div>`;
+
+                    // Transfer Acceptance
+                    html += `<div class="score-row">
+                        <div class="score-info"><span>Transfer Acceptance</span></div>`;
+                    if (typeof data.acceptance === 'string') {
+                        html += `<div class="badge-green" style="padding: 0.4rem 0.8rem; border-radius: 999px; display: inline-block; font-size: 0.75rem; font-weight: 700;">✅ ${data.acceptance}</div>`;
+                    } else {
+                        html += `
+                            <div class="score-info" style="font-size: 0.75rem; color: rgba(255,255,255,0.7);">
+                                <span>Likelihood</span>
+                                <span id="acceptance-score">${data.acceptance}%</span>
+                            </div>
+                            <div class="score-bar-bg">
+                                <div class="score-bar-fill" style="width: ${data.acceptance}%; background-color: ${getBarColor(data.acceptance)};"></div>
+                            </div>
+                        `;
+                    }
+                    html += `<div class="score-context">${data.acceptanceCtx}</div></div>`;
+
+                    // Insight / Checklist / Summary
+                    if (data.insight) {
+                        html += `<div class="insight-box insight-${data.insightType}">${data.insight}</div>`;
+                    }
+                    if (data.checklist) {
+                        html += `
+                            <div class="checklist-card">
+                                <div class="checklist-title">${data.checklist.title}</div>
+                                ${data.checklist.items.map(item => `
+                                    <div class="checklist-item ${item.checked ? 'checked' : ''}">
+                                        <span>${item.checked ? '☑' : (item.highlighted ? '☐' : '☐')}</span>
+                                        <span style="${item.highlighted ? 'color: var(--orange); font-weight: 600;' : ''}">${item.text} ${item.highlighted ? '←' : ''}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                    if (data.rewrite) {
+                        html += `
+                            <div class="rewrite-card">
+                                <div class="rewrite-title">✏️ Suggested Rewrite</div>
+                                <div style="color: #f87171; font-style: italic; margin-bottom: 0.25rem;">Instead of: "${data.rewrite.instead}"</div>
+                                <div style="color: #4ade80;">Try: "${data.rewrite.try}"</div>
+                            </div>
+                        `;
+                    }
+                    if (data.summary) {
+                        html += `
+                            <div class="checklist-card" style="background: rgba(255,255,255,0.1);">
+                                <div class="checklist-title">${data.summary.title}</div>
+                                <div style="font-size: 0.8rem; white-space: pre-line;">${data.summary.text}</div>
+                                <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                    <button class="cta-btn" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;" onclick="showToast()">📄 Save to Case</button>
+                                    <button class="btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.75rem; color: white; border-color: rgba(255,255,255,0.3);" onclick="showToast()">📋 Copy Summary</button>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                html += `</div>`;
+                traceContentDiv.innerHTML = html;
+                traceContentDiv.style.opacity = '1';
+
+                // Animate numbers
+                if (stateIdx > 0) {
+                    const prevData = scoreTable[Math.max(0, stateIdx - 1)];
+                    animateValue("skill-score", prevData.skill || 0, data.skill, 900);
+                    animateValue("evidence-score", prevData.evidence || 0, data.evidence, 900);
+                    if (typeof data.acceptance === 'number') {
+                        animateValue("acceptance-score", prevData.acceptance || 0, data.acceptance, 900);
+                    }
+                }
+            }, 200);
+        }
+
+        function renderScoreRow(label, val, ctx, id) {
+            return `
+                <div class="score-row">
+                    <div class="score-info">
+                        <span>${label}</span>
+                        <span id="${id}">${val}%</span>
+                    </div>
+                    <div class="score-bar-bg">
+                        <div class="score-bar-fill" style="width: ${val}%; background-color: ${getBarColor(val)};"></div>
+                    </div>
+                    <div class="score-context">${ctx}</div>
+                </div>
+            `;
+        }
+
+        function triggerStateChange(stateIdx) {
+            if (currentState === stateIdx) return;
+            
+            analyzingIndicator.style.opacity = '1';
+            setTimeout(() => {
+                analyzingIndicator.style.opacity = '0';
+                currentState = stateIdx;
+                renderState(currentState);
+            }, 1000);
+        }
+
+        function stepForward() {
+            if (currentIndex < transcript.length - 1) {
+                currentIndex++;
+                updateTranscript();
+                checkTriggers();
+                updateControls();
+            }
+        }
+
+        function stepBack() {
+            if (currentIndex >= 0) {
+                currentIndex--;
+                updateTranscript();
+                checkTriggers();
+                updateControls();
+            }
+        }
+
+        function checkTriggers() {
+            const msgNum = currentIndex + 1;
+            let targetState = 0;
+            
+            // Find the highest state triggered by current message count
+            Object.keys(stateTriggerMap).forEach(m => {
+                if (msgNum >= parseInt(m)) {
+                    targetState = stateTriggerMap[m];
+                }
+            });
+
+            if (targetState !== currentState) {
+                triggerStateChange(targetState);
+            } else {
+                // Just update progress bar if state didn't change
+                const progress = ((currentIndex + 1) / transcript.length) * 100;
+                demoProgressBar.style.width = `${progress}%`;
+            }
+        }
+
+        function updateControls() {
+            btnBack.disabled = currentIndex < 0;
+            btnForward.disabled = currentIndex >= transcript.length - 1;
+
+            if (currentIndex === transcript.length - 1) {
+                btnPlay.innerText = "⏹ Reset";
+            } else if (isPlaying) {
+                btnPlay.innerText = "⏸ Pause";
+            } else if (currentIndex === -1) {
+                btnPlay.innerText = "▶ Start Demo";
+            } else {
+                btnPlay.innerText = "▶ Resume";
+            }
+        }
+
+        function play() {
+            if (currentIndex >= transcript.length - 1) {
+                reset();
+                return;
+            }
+
+            isPlaying = true;
+            updateControls();
+            
+            const nextMsgIndex = currentIndex + 1;
+            const delay = (timings[nextMsgIndex] - (currentIndex >= 0 ? timings[currentIndex] : 0)) / speed;
+            
+            timer = setTimeout(() => {
+                stepForward();
+                if (isPlaying) play();
+            }, delay);
+        }
+
+        function pause() {
+            isPlaying = false;
+            clearTimeout(timer);
+            updateControls();
+        }
+
+        function reset() {
+            pause();
+            currentIndex = -1;
+            currentState = 0;
+            updateTranscript();
+            renderState(0);
+            updateControls();
+            demoProgressBar.style.width = '0%';
+        }
+
+        // --- EVENTS ---
+
+        btnPlay.onclick = () => {
+            if (isPlaying) {
+                pause();
+            } else {
+                play();
+            }
+        };
+
+        btnForward.onclick = () => {
+            if (isPlaying) {
+                clearTimeout(timer);
+                stepForward();
+                play();
+            } else {
+                stepForward();
+            }
+        };
+
+        btnBack.onclick = () => {
+            if (isPlaying) {
+                clearTimeout(timer);
+                stepBack();
+                play();
+            } else {
+                stepBack();
+            }
+        };
+
+        speedNormal.onclick = () => {
+            speed = 1;
+            speedNormal.classList.add('active');
+            speedFast.classList.remove('active');
+        };
+
+        speedFast.onclick = () => {
+            speed = 2;
+            speedFast.classList.add('active');
+            speedNormal.classList.remove('active');
+        };
+
+        // Initialize
+        renderState(0);
+        updateControls();
+
+    </script>
+</body>
+</html>
