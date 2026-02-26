@@ -103,7 +103,7 @@ export default function Impact() {
           ⚡ TRACE — Transfer Resolution & Agent Coaching Engine · CommOps AI Hackathon 2026
         </div>
         <div className="text-[0.78rem] text-white/40">
-          Built by Grigorii Kvashnin · Brian King · Venice Segovia · Blaise Anne Cahilog
+          Built by Grigorii Kvashnin · Brian King · Venice Segovia
         </div>
       </footer>
     </section>
